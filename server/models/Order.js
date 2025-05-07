@@ -36,6 +36,11 @@ const orderSchema=new mongoose.Schema({
         type: Date, 
         required: true,
     },
+    timeSlot: {
+        type: String,
+        enum: ["morning", "afternoon", "evening"],
+        required: true
+      },
 })
 
 module.exports = mongoose.model("Order", orderSchema)

@@ -3,12 +3,12 @@ const router = express.Router()
 const color = require("../controllers/colorController")
 
 router.get("/getAllColors",color.getAllColors)
-router.get("/getColorById:id",color.getColorById)
+router.get("/getColorById/:id",color.getColorById)
 
 router.post("/createColor",color.createColor)
 
-router.put("updateAvailableColor:id",color.updateAvailableColor)
+router.put("updateAvailableColor/:id",color.updateAvailableColor)
 
-router.delete("deletColor:id" ,color.deletColor)
+router.delete("deletColor/:id" ,color.deletColor)
 
 module.exports=router
