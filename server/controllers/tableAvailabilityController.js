@@ -1,7 +1,10 @@
 const Table = require("../models/Table");
 const TableAvailability = require("../models/TableAvailability");
+// router.get("/",tableAvailabilityController.getAvailableTables)
+// router.get("/ByDate",tableAvailabilityController.getReservationsByDate)
+// router.delete("/",verifyAdmin,tableAvailabilityController.deleteByDate)  
 
-
+//get
 exports.getAvailableTables = async (req, res) => {
     const { date, timeSlot } = req.query;
 
