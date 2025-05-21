@@ -5,7 +5,6 @@
   box-sizing: border-box;
 }
 
-
 /* גוף האתר */
 body {
   font-family: 'Baloo 2', cursive;
@@ -15,18 +14,15 @@ body {
   font-size: 16px;
 }
 
-
 /* קישורים */
 a {
   color: #e07a5f;
   text-decoration: none;
 }
 
-
 a:hover {
   color: #f4a261;
 }
-
 
 /* התאמה כללית ל-Komponents של PrimeReact */
 .p-button {
@@ -37,18 +33,15 @@ a:hover {
   transition: background-color 0.3s ease;
 }
 
-
 /* התאמה לצבעוניות של ColorClay */
 .p-button-primary {
   background-color: #f4a261;
   border: none;
 }
 
-
 .p-button-primary:hover {
   background-color: #e76f51;
 }
-
 
 .p-dialog .p-dialog-header {
   font-family: 'Baloo 2', cursive;
@@ -56,12 +49,10 @@ a:hover {
   color: #264653;
 }
 
-
 .p-inputtext {
   font-family: 'Baloo 2', cursive;
   border-radius: 8px;
 }
-
 
 /* קונטיינר כללי */
 .container {
@@ -69,7 +60,6 @@ a:hover {
   margin: auto;
   padding: 2rem;
 }
-
 
 /* קלפים */
 .card {
@@ -81,13 +71,6 @@ a:hover {
   transition: transform 0.2s ease;
 }
 
-
 .card:hover {
   transform: scale(1.02);
 }
-
-
-
-
-
-

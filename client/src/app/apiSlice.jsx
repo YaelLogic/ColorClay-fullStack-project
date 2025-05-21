@@ -1,19 +1,19 @@
-const { createApi, fetchBaseQuery } = '@reduxjs/toolkit/query/react';
-
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
 
 const apiSlice = createApi({
-   
-    reducerPath: 'api',
+    reducerPath: "api",
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://localhost:1100'
+        baseUrl: "http://localhost:1100",
+        credentials: 'include',
+        prepareHeaders: (headers, { getState }) => {
+            const token = getState().auth.token
+            if (token) {
+                headers.set("authorization", `Bearer ${token}`)
+            }
+            console.log(headers)
+            return headers
+        }
     }),
-
-
-    endPoints: () => ({})
-});
-
-
-
-
-
-
+    endpoints: () => ({})
+})
+export default apiSlice
