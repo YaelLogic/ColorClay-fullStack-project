@@ -27,7 +27,7 @@ exports.getCategoryById = async (req, res) => {
   }
 };
 
-// post
+// put
 exports.createCategory = async (req, res) => {
   try {
     const { name } = req.body;
