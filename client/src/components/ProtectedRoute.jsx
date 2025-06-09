@@ -23,6 +23,7 @@ const ProtectedRoute = ({ children }) => {
     return children;
 
   } catch (err) {
+    // טוקן שגוי או לא ניתן לפענוח
     return <Navigate to="/login" replace />;
   }
 };

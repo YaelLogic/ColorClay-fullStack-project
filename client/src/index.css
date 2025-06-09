@@ -1,10 +1,11 @@
+
+
 body {
   margin: 0;
   direction: rtl;
   font-family: 'Varela Round', sans-serif;
   background: linear-gradient(135deg, #fde7e7, #fff2ec); /* גוונים בהירים ורודים-כתומים מהלוגו */
 }
-
 
 .form-container {
   width: 420px;
@@ -16,13 +17,11 @@ body {
   text-align: right;
 }
 
-
 .form-container img.logo {
   width: 160px;
   margin: 0 auto 24px;
   display: block;
 }
-
 
 .form-title {
   color: #d96459; /* כתום ורדרד מהלוגו */
@@ -30,7 +29,6 @@ body {
   margin-bottom: 24px;
   text-align: center;
 }
-
 
 input, .p-inputtext {
   width: 100%;
@@ -42,10 +40,9 @@ input, .p-inputtext {
   direction: rtl;
 }
 
-
 button, .p-button {
   width: 100%;
-  background-color: #b36aa2; /* סגול מהלוגו */
+  background-color: #a998a8; /* סגול מהלוגו */
   color: white;
   padding: 14px;
   border: none;
@@ -55,20 +52,23 @@ button, .p-button {
   transition: background 0.3s;
 }
 
-
 button:hover, .p-button:hover {
-  background-color: hsl(311, 29%, 49%);
+  background-color: #597675;
 }
-
 
 .p-float-label label {
   right: 1rem;
   left: auto;
 }
 
-
 .p-float-label input, .p-float-label .p-inputtext {
   text-align: right;
+}
+
+.p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
+  color: #d96459; 
+  border-color: #d96459;
+  font-weight: bold;
 }
 
 .logo {
@@ -77,13 +77,18 @@ button:hover, .p-button:hover {
     max-height: 150px;
     height: auto;
 }
-.p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
-  color: #d96459; /* ירוק מהלוגו */
-  border-color: #d96459;
+
+.availability {
   font-weight: bold;
+  text-align: center;
+  margin-top: 5px;
 }
 
+.available {
+  color: rgb(64, 86, 64);
+}
 
-
-
+.unavailable {
+  color: rgb(225, 99, 99);
+}
 

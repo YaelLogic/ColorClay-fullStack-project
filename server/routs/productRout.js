@@ -8,7 +8,7 @@ const verifyAdmin = require("../middleware/verifyAdmin")
 router.use(verifyJWT)
 
 router.get("/",product.getAllProducts)
-router.get("/:id",product.getProductById)
+router.get("/byCategory/:categoryId",product.getProductByCategory)
 
 router.post("/",verifyAdmin,product.createProduct)
 

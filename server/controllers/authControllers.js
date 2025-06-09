@@ -1,4 +1,5 @@
 const User = require("../models/User")
+
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const login = async (req, res) => {
@@ -8,7 +9,8 @@ const login = async (req, res) => {
     if (!username || !password) {
         return res.status(400).json({ message: 'All fields are required' })
     }
-    const foundUser = await User.findOne({ username }).lean()
+    const foundUser = await User.findOne({ username }).populate('orders').lean()
+
     if (!foundUser) {
         return res.status(401).json({ message: 'Unauthorized' })
     }
@@ -23,13 +25,15 @@ const login = async (req, res) => {
         name: foundUser.name,
         roles: foundUser.roles,
         username: foundUser.username,
-        email: foundUser.email
+        email: foundUser.email,
+        phone: foundUser.phone,
+        orders: foundUser.orders
     }
 
+    const accessToken = jwt.sign(userInfo, process.env.ACCESS_TOKEN_SECRET)
+    console.log("Login response:", { accessToken, userInfo });
 
-    const accessToken= jwt.sign(userInfo,process.env.ACCESS_TOKEN_SECRET)
-    res.json({accessToken:accessToken})
-   
+    res.json({ accessToken, userInfo });
 }
 
 

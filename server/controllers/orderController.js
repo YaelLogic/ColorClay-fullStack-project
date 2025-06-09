@@ -3,14 +3,14 @@ const Product = require("../models/Product")
 const Color = require("../models/Color")
 const nodemailer = require("nodemailer")
 const TableAvailability = require("../models/TableAvailability")
-
+const User = require("../models/User")
 //post
 //create order status1
 exports.createOrder = async (req, res) => {
     try {
         const { userId, tableId, date, timeSlot } = req.body;
 
-        if (!userId || !tableId || !date || !timeSlot ) {
+        if (!userId || !tableId || !date || !timeSlot) {
             return res.status(400).json({ message: "Missing required fields" });
         }
 
@@ -40,9 +40,13 @@ exports.createOrder = async (req, res) => {
             date,
             timeSlot,
         });
-         if (!newOrder) {
+        if (!newOrder) {
             return res.status(500).json({ message: 'Error while placing order' });
         }
+        await User.findByIdAndUpdate(userId, {
+            $push: { orders: newOrder._id }
+        });
+
         return res.status(201).json(newOrder);
 
     } catch (error) {
@@ -57,6 +61,8 @@ exports.addProductsAndColors = async (req, res) => {
     try {
         const { orderId } = req.params;
         const { productIds = [], colorIds = [] } = req.body;
+        console.log("productIds", productIds);
+        console.log("colorIds", colorIds);
 
 
         if (!orderId) {
@@ -215,6 +221,25 @@ exports.getOrderById = async (req, res) => {
 
 
         res.status(200).json(order);
+    } catch (error) {
+        res.status(500).json({ message: "Error retrieving order", error });
+    }
+}
+
+//get
+//status 
+exports.getOrdersByStatus = async (req, res) => {
+    const { status } = req.params;
+    if (!status) {
+        return res.status(400).json({ message: "Status parameter is required" });
+    }
+    try {
+        const orders = await Order.find({ status })
+            .populate("userId")
+            .populate("productIds")
+            .populate("colorIds")
+            .populate("tableId");
+        res.status(200).json(orders);
     } catch (error) {
         res.status(500).json({ message: "Error retrieving order", error });
     }
